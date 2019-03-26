@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+from .models import Post
 
 
 def post_create(request):
@@ -14,7 +15,9 @@ def post_detail(request):
   return render(request, "index.html", context)
 
 def post_list(request):
+  queryset = Post.objects.all()
   context = {
+    "object_list": queryset,
     "title": "List"
   }
   return render(request, "index.html", context)
