@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 # MVC MODEL VIEW CONTROLER
@@ -20,4 +21,5 @@ class Post(models.Model):
     return self.title
 
   def get_absolute_url(self):
-    return "/posts/%$" %(self.id)
+    return reverse("posts:detail", kwargs={"id": self.id})
+    # return "/posts/detail/" %(self.id)
